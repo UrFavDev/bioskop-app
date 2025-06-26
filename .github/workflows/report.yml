@@ -1,0 +1,27 @@
+name: Generate Activity Report
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate latest commit log as report
+        run: |
+          echo "Laporan aktivitas commit terbaru:" > laporan.txt
+          git log -1 --pretty=format:"%h - %s (%an)" >> laporan.txt
+
+      - name: Commit and push report file
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add laporan.txt
+          git commit -m "Update laporan aktivitas otomatis"
+          git push
