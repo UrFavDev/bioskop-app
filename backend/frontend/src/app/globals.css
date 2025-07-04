@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Custom Font ===== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import '@fontsource/inter';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1f2937; /* Tailwind's gray-800 */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #facc15; /* Tailwind's yellow-500 */
+  border-radius: 9999px;
+}
+
+/* ===== Movie Card Style ===== */
+.movie-card {
+  @apply rounded-lg overflow-hidden bg-gray-800 shadow-md transition-transform duration-300 hover:scale-105;
+}
+
+.movie-card img {
+  @apply w-full h-full object-cover transition-opacity duration-300;
+}
+
+.movie-card:hover img {
+  @apply opacity-90;
+}
+
+/* ===== Fade In Up Animation ===== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+/* ===== Optional: Fade In (for Hero Image) ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* ===== Optional: Slide Up (for Hero Title) ===== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
